@@ -1,0 +1,8 @@
+main: me.wmorales01.lightweightteleport.Main
+name: LightWeightTeleport
+author: Wmorales01
+version: 1.0
+
+commands:
+  teleport:
+    aliases: [tp]
