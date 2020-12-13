@@ -24,6 +24,8 @@ public class LocationManager {
 			data.set("homes." + playerName + ".x", location.getX());
 			data.set("homes." + playerName + ".y", location.getY());
 			data.set("homes." + playerName + ".z", location.getZ());
+			data.set("homes." + playerName + ".pitch", location.getPitch());
+			data.set("homes." + playerName + ".yaw", location.getYaw());
 			data.set("homes." + playerName + ".world", location.getWorld().getName());
 		}
 		plugin.saveLocationData();
@@ -45,6 +47,8 @@ public class LocationManager {
 			data.set("pois." + poiName + ".x", location.getX());
 			data.set("pois." + poiName + ".y", location.getY());
 			data.set("pois." + poiName + ".z", location.getZ());
+			data.set("pois." + poiName + ".pitch", location.getPitch());
+			data.set("pois." + poiName + ".yaw", location.getYaw());
 			data.set("pois." + poiName + ".world", location.getWorld().getName());
 		}
 		plugin.saveLocationData();
@@ -62,8 +66,12 @@ public class LocationManager {
 		double x = data.getDouble(dir + key + ".x");
 		double y = data.getDouble(dir + key + ".y");
 		double z = data.getDouble(dir + key + ".z");
+		double pitch = data.getDouble(dir + key + ".pitch");
+		double yaw = data.getDouble(dir + key + ".yaw");
 		World world = Bukkit.getWorld(data.getString(dir + key + ".world"));
 		Location location = new Location(world, x, y, z);
+		location.setPitch((float) pitch);
+		location.setYaw((float) yaw);
 		return location;
 	}
 }
