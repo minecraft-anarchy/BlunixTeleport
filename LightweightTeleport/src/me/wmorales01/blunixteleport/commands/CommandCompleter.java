@@ -1,4 +1,4 @@
-package me.wmorales01.lightweightteleport.commands;
+package me.wmorales01.blunixteleport.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,32 +9,24 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
-import me.wmorales01.lightweightteleport.Main;
+import me.wmorales01.blunixteleport.BlunixTeleport;
 
 public class CommandCompleter implements TabCompleter {
-	private Main plugin;
-	private ArrayList<String> arguments = new ArrayList<String>();
+	private BlunixTeleport plugin;
 
-	public CommandCompleter(Main instance) {
+	public CommandCompleter(BlunixTeleport instance) {
 		plugin = instance;
 	}
 
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+		ArrayList<String> arguments = new ArrayList<String>();
 		if (arguments.isEmpty()) {
-			arguments.add("accept");
-			arguments.add("bed");
-			arguments.add("cooldown");
-			arguments.add("delpoi");
-			arguments.add("deny");
-			arguments.add("gps");
-			arguments.add("help");
-			arguments.add("home");
-			arguments.add("to");
-			arguments.add("poi");
-			arguments.add("sethome");
-			arguments.add("setpoi");
-			arguments.add("setpoi");
-			arguments.add("wild");
+			for (TPCommand subCommand : plugin.getSubcommands().values()) {
+				if (!sender.hasPermission(subCommand.getPermission()))
+					continue;
+				
+				arguments.add(subCommand.getName());
+			}
 		}
 		ArrayList<String> results = new ArrayList<String>();
 		
@@ -65,11 +57,6 @@ public class CommandCompleter implements TabCompleter {
 			case "deny":
 				return null;
 
-			case "help":
-				results.add("1");
-				results.add("2");
-				return results;
-
 			default:
 				return results;
 			}
@@ -80,7 +67,7 @@ public class CommandCompleter implements TabCompleter {
 	private ArrayList<String> getPoiList(ArrayList<String> results, String[] args) {
 		ArrayList<String> pois = new ArrayList<String>();
 
-		for (Map.Entry<String, Location> entry : plugin.pois.entrySet()) {
+		for (Map.Entry<String, Location> entry : plugin.getPois().entrySet()) {
 			String poiName = entry.getKey().substring(0, 1).toUpperCase() + entry.getKey().substring(1);
 			pois.add(poiName);
 		}

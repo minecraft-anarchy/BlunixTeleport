@@ -1,7 +1,9 @@
-main: me.wmorales01.lightweightteleport.Main
-name: LightWeightTeleport
+main: me.wmorales01.blunixteleport.BlunixTeleport
+name: BlunixTeleport
 author: Wmorales01
 version: 1.0
+
+api-version: 1.13
 
 commands:
   teleport:

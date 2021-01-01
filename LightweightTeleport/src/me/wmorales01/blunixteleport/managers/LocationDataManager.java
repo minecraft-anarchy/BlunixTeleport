@@ -1,24 +1,28 @@
-package me.wmorales01.lightweightteleport.models;
+package me.wmorales01.blunixteleport.managers;
 
 import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import me.wmorales01.lightweightteleport.Main;
+import me.wmorales01.blunixteleport.BlunixTeleport;
 
-public class LocationManager {
-	private Main plugin;
+public class LocationDataManager {
+	private BlunixTeleport plugin;
 
-	public LocationManager(Main instance) {
+	public LocationDataManager(BlunixTeleport instance) {
 		this.plugin = instance;
 	}
 
 	public void saveHomes() {
+		if (plugin.getHomes().isEmpty())
+			return;
+		
 		FileConfiguration data = plugin.getLocationData();
-		for (Map.Entry<String, Location> entry : plugin.homes.entrySet()) {
+		for (Map.Entry<String, Location> entry : plugin.getHomes().entrySet()) {
 			String playerName = entry.getKey();
 			Location location = entry.getValue();
 			data.set("homes." + playerName + ".x", location.getX());
@@ -33,15 +37,22 @@ public class LocationManager {
 
 	public void restoreHomes() {
 		FileConfiguration data = plugin.getLocationData();
-		data.getConfigurationSection("homes").getKeys(false).forEach(key -> {
+		ConfigurationSection dataSection = data.getConfigurationSection("homes");
+		if (dataSection == null)
+			return;
+		
+		dataSection.getKeys(false).forEach(key -> {
 			Location location = getLocationFromData(data, "homes.", key);
-			plugin.homes.put(key, location);
+			plugin.addHomes(key, location);
 		});
 	}
 
 	public void savePois() {
-		FileConfiguration data = this.plugin.getLocationData();
-		for (Map.Entry<String, Location> entry : this.plugin.pois.entrySet()) {
+		if (plugin.getPois().isEmpty())
+			return;
+		
+		FileConfiguration data = plugin.getLocationData();
+		for (Map.Entry<String, Location> entry : plugin.getPois().entrySet()) {
 			String poiName = entry.getKey();
 			Location location = entry.getValue();
 			data.set("pois." + poiName + ".x", location.getX());
@@ -55,10 +66,14 @@ public class LocationManager {
 	}
 
 	public void restorePois() {
-		FileConfiguration data = this.plugin.getLocationData();
-		data.getConfigurationSection("pois").getKeys(false).forEach(key -> {
+		FileConfiguration data = plugin.getLocationData();
+		ConfigurationSection dataSection = data.getConfigurationSection("pois");
+		if (dataSection == null)
+			return;
+		
+		dataSection.getKeys(false).forEach(key -> {
 			Location location = this.getLocationFromData(data, "pois.", key);
-			plugin.pois.put(key, location);
+			plugin.addPois(key, location);
 		});
 	}
 

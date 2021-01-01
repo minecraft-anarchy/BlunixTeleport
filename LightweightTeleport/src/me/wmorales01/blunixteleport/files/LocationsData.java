@@ -1,4 +1,4 @@
-package me.wmorales01.lightweightteleport.files;
+package me.wmorales01.blunixteleport.files;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,14 +9,14 @@ import java.util.logging.Level;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import me.wmorales01.lightweightteleport.Main;
+import me.wmorales01.blunixteleport.BlunixTeleport;
 
-public class LocationDataManager {
-	private Main plugin;
+public class LocationsData {
+	private BlunixTeleport plugin;
 	private FileConfiguration dataConfig = null;
 	private File configFile = null;
 
-	public LocationDataManager(Main instance) {
+	public LocationsData(BlunixTeleport instance) {
 		this.plugin = instance;
 		saveDefaultConfig();
 	}
