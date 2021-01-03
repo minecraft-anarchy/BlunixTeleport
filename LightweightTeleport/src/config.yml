@@ -4,7 +4,9 @@ tp-delay: 5
 
 tp-request-expiration: 30
 
-tp-wild-radius: 1500
+tp-wild-max-radius: 3000
+
+tp-wild-min-radius: 1500
 
 toa: "Some really long text, use \\n to skip a line"
 

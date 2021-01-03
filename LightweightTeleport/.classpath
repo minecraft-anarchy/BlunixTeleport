@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="E:/Users/WILLIAM2/Downloads/Video/Spigot Programming/Server 1.16.4/spigot-1.16.4.jar"/>
+	<classpathentry kind="lib" path="E:/Users/WILLIAM2/Downloads/Video/Spigot Programming/spigot-1.16.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
