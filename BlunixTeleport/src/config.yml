@@ -1,15 +1,35 @@
+## GENERAL
+
+# Real time (including offline time) in minutes until a player can issue another /tp command that performs teleportation.
 tp-cooldown: 30
 
+# Time in seconds the player has to stand still after issuing a /tp command that performs teleportation. If the player moves, the teleportation command will be aborted. 
 tp-delay: 5
 
+# Time in seconds player one can accept a teleportation request from player two before it expires.
 tp-request-expiration: 30
 
-tp-wild-max-radius: 3000
+# Chance in percent a teleportation will kill the player.
+death-chance: 0.5
 
-tp-wild-min-radius: 1500
+# Text for Terms of Agreement (/tp toa).
+toa: |
+  These are the Terms of Agreement for using teleportation using the /tp command as issued by the Temple of Teleportation (ToT) on January 15th 2021.\n
+    - Teleportation may seriously damage your health\n\n
+  To agree to those Terms, please issue:\n
+    /tp toa accept\n
+  To recall your agreement, please issue:\n
+    /tp toa deny
 
-random-locations-amount: 10000
 
-toa: "Some really long text, use \\n to skip a line"
 
-death-chance: 1
+## /tp wild
+
+# Minimum radius in blocks for /tp wild.
+tp-wild-min-radius: 3000
+
+# Maximum radius in blocks for /tp wild.
+tp-wild-max-radius: 200000
+
+# Amount of /tp wild locations to pre-generate with /tp generatelocations.
+random-locations-amount: 1000
