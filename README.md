@@ -33,7 +33,7 @@ foo.bar.qux: allows players to teleport @wmorales please add this
 
 # Author Information
 
-Written by: https://github.com/Wmorales01
+Written by: https://github.com/Wmorales01  
 Sponsored by: Blunix GmbH - Consulting for Linux Hosting 24/7
 
 Blunix GmbH provides 24/7 support with Service Level Agreements for Debian Linux based hosting environments which are automated with Ansible.
