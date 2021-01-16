@@ -26,6 +26,11 @@ This plugins functionality includes:
 - `/tp reload` Reload the plugin
 
 
+# Configuration
+
+The documented configuration file can be found here: https://github.com/minecraft-anarchy/BlunixTeleport/blob/master/BlunixTeleport/src/config.yml
+
+
 # Permissions
 
 foo.bar.qux: allows players to teleport @wmorales please add this
