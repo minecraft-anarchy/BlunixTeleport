@@ -44,11 +44,16 @@ public class CommandWild extends TPCommand {
 			attemptCounter++;
 
 			if (attemptCounter == 10) {
-				Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-					MessageManager.sendMessage(player, "&6Looking for a safe location...");
-					TeleportManager.teleportPlayerSafely(player, TeleportManager.getWildLocation(player.getWorld()), true);
-					return;
-				});
+				if (player.hasPermission("blunixteleport.admin")) {
+					Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+						MessageManager.sendMessage(player, "&6Looking for a safe location...");
+						TeleportManager.teleportPlayerSafely(player, TeleportManager.getWildLocation(player.getWorld()),
+								true);
+						return;
+					});
+				} else
+					MessageManager.sendMessage(player,
+							"&cThe random location database is currently depleted. Please try again later.");
 				return;
 			}
 		} while (location.getX() == 0 && location.getY() == 0 && location.getZ() == 0);

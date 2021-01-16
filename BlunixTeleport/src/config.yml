@@ -1,6 +1,6 @@
 ## GENERAL
 
-# Real time (including offline time) in minutes until a player can issue another /tp command that performs teleportation.
+# Real time (including offline time) in seconds until a player can issue another /tp command that performs teleportation.
 tp-cooldown: 30
 
 # Time in seconds the player has to stand still after issuing a /tp command that performs teleportation. If the player moves, the teleportation command will be aborted. 
@@ -39,6 +39,6 @@ random-locations-amount: 1000
 
 # Worlds that will be displayed in /tp gps completer and its corresponding world folder
 worlds:
-  Overworld: world
-  Nether: world_nether
-  End: world_the_end
+  overworld: world
+  nether: world_nether
+  end: world_the_end

@@ -59,6 +59,8 @@ public class ConfigManager {
 	
 	public static World getGpsWorld(String worldLabel) {
 		String worldName = plugin.getConfig().getString("worlds." + worldLabel);
+		if (worldName == null)
+			return null;
 		World world = Bukkit.getWorld(worldName);
 		
 		return world;

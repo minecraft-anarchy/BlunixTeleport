@@ -56,6 +56,8 @@ public class CommandGenerateLocations extends TPCommand {
 				plugin.getRandomLocationData().set(worldName + "." + var + ".x", x);
 				plugin.getRandomLocationData().set(worldName + "." + var + ".y", y);
 				plugin.getRandomLocationData().set(worldName + "." + var + ".z", z);
+				var++;
+				plugin.saveRandomLocationData();
 			}
 			plugin.saveRandomLocationData();
 		});

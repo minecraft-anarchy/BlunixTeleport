@@ -37,7 +37,7 @@ public class MessageManager {
 	}
 
 	public static void sendCooldownMessage(Player player, long cooldown) {
-		sendMessage(player, "&cYour TP is in cooldown! You need to wait &l" + cooldown + " minutes.");
+		sendMessage(player, "&cYour TP is in cooldown! You need to wait &l" + cooldown + " seconds.");
 	}
 
 	public static void sendNoPermissionMessage(CommandSender sender) {

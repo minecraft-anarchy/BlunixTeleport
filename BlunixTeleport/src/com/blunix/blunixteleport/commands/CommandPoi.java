@@ -43,7 +43,7 @@ public class CommandPoi extends TPCommand {
 
 		} else if (args.length > 1) {
 			// Executed /tp poi <POI>
-			String selectedPoi = args[1].toLowerCase();
+			String selectedPoi = args[1];
 			if (!plugin.getPois().containsKey(selectedPoi)) {
 				MessageManager.sendMessage(player, "&cUnknown POI");
 				return;

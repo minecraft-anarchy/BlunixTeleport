@@ -12,7 +12,7 @@ public class PlayerCooldownManager {
 	}
 
 	public void setCooldown() {
-		long cooldown = ConfigManager.getTpCooldown() * 1000 * 60;
+		long cooldown = ConfigManager.getTpCooldown() * 1000;
 		plugin.addCooldowns(player, System.currentTimeMillis() + cooldown);
 	}
 
@@ -23,7 +23,7 @@ public class PlayerCooldownManager {
 			return cooldown;
 
 		cooldown = plugin.getCooldowns().get(player);
-		return (cooldown - System.currentTimeMillis()) / 1000 / 60;
+		return (cooldown - System.currentTimeMillis()) / 1000;
 	}
 
 	public boolean hasCooldown() {
