@@ -1,7 +1,7 @@
 ## GENERAL
 
 # Real time (including offline time) in seconds until a player can issue another /tp command that performs teleportation.
-tp-cooldown: 30
+tp-cooldown: 1800
 
 # Time in seconds the player has to stand still after issuing a /tp command that performs teleportation. If the player moves, the teleportation command will be aborted. 
 tp-delay: 5
@@ -17,28 +17,28 @@ teleport-death-message: "&6Loosing connection on the annular confinement beam!"
 
 # Text for Terms of Agreement (/tp toa).
 toa: |
-  These are the Terms of Agreement for using teleportation using the /tp command as issued by the Temple of Teleportation (ToT) on January 15th 2021.\n
-    - Teleportation may seriously damage your health\n\n
-  To agree to those Terms, please issue:\n
-    /tp toa accept\n
-  To recall your agreement, please issue:\n
+  These are the Terms of Agreement for using teleportation using the /tp command as issued by the Temple of Teleportation (ToT) on January 15th 2021.
+    - Teleportation may seriously damage your health
+  To agree to those Terms, please issue:
+    /tp toa accept
+  To recall your agreement, please issue:
     /tp toa deny
 
 
 
 ## /tp wild
 
-# Minimum radius in blocks for /tp wild.
+# Minimum distance from X=0 Z=0 in blocks for both X and Z achsis.
 tp-wild-min-radius: 3000
 
-# Maximum radius in blocks for /tp wild.
+# Maximum distance from X=0 Z=0 in blocks for both X and Z achsis.
 tp-wild-max-radius: 200000
 
 # Amount of /tp wild locations to pre-generate with /tp generatelocations.
-random-locations-amount: 1000
+random-locations-amount: 50
 
 # Worlds that will be displayed in /tp gps completer and its corresponding world folder
 worlds:
-  overworld: world
-  nether: world_nether
-  end: world_the_end
+  overworld: minecraft-anarchy
+  nether: minecraft-anarchy_nether
+  end: minecraft-anarchy_the_end
