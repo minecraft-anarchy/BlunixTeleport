@@ -33,7 +33,19 @@ The documented configuration file can be found here: https://github.com/minecraf
 
 # Permissions
 
-foo.bar.qux: allows players to teleport @wmorales please add this
+- `blunixteleport.request` - Allows `/tp to` command
+- `blunixteleport.respond` - Allows `/tp accept` and `/tp deny` commands
+- `blunixteleport.toa` - Allows `/tp toa` commands
+- `blunixteleport.poi` - Allows `/tp poi` commands
+- `blunixteleport.setpoi` - Allows `/tp setpoi` command
+- `blunixteleport.delpoi` - Allows `/tp delpoi` command
+- `blunixteleport.bed` - Allows `/tp bed` command
+- `blunixteleport.wild` - Allows `/tp wild` command
+- `blunixteleport.gps` - Allows `/tp gps` command
+- `blunixteleport.cooldown` - Allows `/tp cooldown` command
+- `blunixteleport.reload` - Allows `/tp reload` command
+- `blunixteleport.generatelocations` - Allows `/tp generatelocations` command
+- `blunixteleport.admin` - Allows admin features in some commands
 
 
 # Author Information
