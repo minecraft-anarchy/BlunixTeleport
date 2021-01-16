@@ -2,7 +2,7 @@
 ## Minecraft Paper Spigot Plugin for Teleportation
 
 
-This minecraft plugin provides teleportation functionality using the `/tp` command.
+This minecraft plugin provides teleportation functionality using the `/tp` command. It is designed to be lightweight, do one thing and do it right as well as making it difficult for players to abuse the functionality.
 
 
 # Functionality
