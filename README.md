@@ -1,10 +1,14 @@
-# blunix.role-partition
-This Ansible role manages filesystems.
+# BlunixTeleport
+## Minecraft Paper Spigot Plugin for Teleportation
 
-This role is part of the Blunix hosting stack. Learn how to use it at <a href="https://man.blunix.com/" target="_blank">man.blunix.com</a>.
+
+This minecraft plugin provides teleportation. Its functionality can be viewed here: 
+
 
 # Author Information
-Blunix GmbH - Consulting for Linux Hosting 24/7
+
+Written by: https://github.com/Wmorales01
+Sponsored by: Blunix GmbH - Consulting for Linux Hosting 24/7
 
 Blunix GmbH provides 24/7 support with Service Level Agreements for Debian Linux based hosting environments which are automated with Ansible.
 
@@ -17,7 +21,7 @@ Germany
 Website: https://www.blunix.com
 E-Mail:  contact@blunix.com
 gpg key: https://www.blunix.com/contact-blunix-com-gpg-key
-Signal:  +49 176 123 456 78
+Signal:  +49 30 629 318 76
 ```
 
 # License
