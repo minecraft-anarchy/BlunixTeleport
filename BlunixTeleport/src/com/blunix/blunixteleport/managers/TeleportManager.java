@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitTask;
 
 import com.blunix.blunixteleport.BlunixTeleport;
 import com.blunix.blunixteleport.events.PlayerMove;
@@ -66,7 +67,7 @@ public class TeleportManager {
 					Random random = new Random();
 					if (random.nextInt(100) > ConfigManager.getDeathChance())
 						return;
-					player.setHealth(0);
+					killPlayer(player);
 				}
 
 			}, delay).getTaskId();
@@ -206,5 +207,22 @@ public class TeleportManager {
 			return false;
 
 		return true;
+	}
+
+	private static void killPlayer(Player player) {
+		BukkitTask task = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+			Location location = player.getLocation();
+			location.getWorld().spawnParticle(Particle.CRIMSON_SPORE, location, 10);
+		}, 0, 20);
+		
+		player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1, false, true, true));
+		player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 80, 4, false, true, true));
+		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+			player.setHealth(0);
+			MessageManager.sendMessage(player, ConfigManager.getTeleportDeathMessage());
+			task.cancel();
+		}, 100);
+		
+		plugin.getCooldowns().remove(player.getName());
 	}
 }

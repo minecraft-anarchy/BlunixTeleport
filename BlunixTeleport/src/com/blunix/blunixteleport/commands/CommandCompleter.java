@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 import com.blunix.blunixteleport.BlunixTeleport;
+import com.blunix.blunixteleport.managers.ConfigManager;
 
 public class CommandCompleter implements TabCompleter {
 	private BlunixTeleport plugin;
@@ -65,9 +66,13 @@ public class CommandCompleter implements TabCompleter {
 			}
 
 		} else if (args.length >= 5 && args[0].equalsIgnoreCase("gps")) {
-			results.add("overworld");
-			results.add("nether");
-			results.add("end");
+			for (String worldLabel : ConfigManager.getGpsWorldLabels()) {
+				if (!worldLabel.toLowerCase().startsWith(args[4].toLowerCase()))
+					continue;
+				
+				results.add(worldLabel);
+			}
+			
 			return results;
 		}
 		return results;

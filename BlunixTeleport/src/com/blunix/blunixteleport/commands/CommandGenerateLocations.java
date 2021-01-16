@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import com.blunix.blunixteleport.BlunixTeleport;
 import com.blunix.blunixteleport.managers.ConfigManager;
@@ -40,6 +41,9 @@ public class CommandGenerateLocations extends TPCommand {
 					safeLocations.add(safeLocation);
 					MessageManager.sendMessage(Bukkit.getConsoleSender(),
 							"&9" + i + " locations for &l" + world.getName() + " &9generated.");
+					if (i % 5 == 0 && sender instanceof Player)
+						MessageManager.sendMessage(sender,
+								"&9" + i + " locations for &l" + world.getName() + " &9generated.");
 				}
 
 			int var = 1;

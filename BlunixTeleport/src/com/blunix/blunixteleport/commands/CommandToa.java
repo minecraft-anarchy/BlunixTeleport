@@ -24,8 +24,13 @@ public class CommandToa extends TPCommand {
 		if (args.length == 1) {
 			// Executed /toa
 			MessageManager.sendMessage(sender, ConfigManager.getToa());
-			MessageManager.sendMessage(sender,
-					"&6Type &l/tp toa accept &6or &l/tp toa deny &6to respond to our Terms of Agreement.");
+			if (plugin.getPlayersInContract().contains(sender.getName()))
+				MessageManager.sendMessage(sender, "&aYou currently accept our Terms of Agreement.");
+			else {
+				MessageManager.sendMessage(sender, "&cYou haven't accepted our Terms of Agreement yet.");
+				MessageManager.sendMessage(sender,
+						"&6Type &l/tp toa accept &6or &l/tp toa deny &6to respond to our Terms of Agreement.");
+			}
 
 		} else if (args.length == 2 && args[1].toLowerCase().equalsIgnoreCase("accept")) {
 			// Executed /toa accept

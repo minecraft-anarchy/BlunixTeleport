@@ -11,22 +11,22 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.blunix.blunixteleport.BlunixTeleport;
 
-public class LocationsData {
+public class PoiData {
 	private BlunixTeleport plugin;
 	private FileConfiguration dataConfig = null;
 	private File configFile = null;
 
-	public LocationsData(BlunixTeleport instance) {
+	public PoiData(BlunixTeleport instance) {
 		this.plugin = instance;
 		saveDefaultConfig();
 	}
 
 	public void reloadConfig() {
 		if (configFile == null) {
-			configFile = new File(plugin.getDataFolder(), "locations.yml");
+			configFile = new File(plugin.getDataFolder(), "poi.yml");
 		}
 		dataConfig = YamlConfiguration.loadConfiguration(this.configFile);
-		InputStream defaultStream = plugin.getResource("locations.yml");
+		InputStream defaultStream = plugin.getResource("poi.yml");
 		if (defaultStream != null) {
 			YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
 			dataConfig.setDefaults(defaultConfig);
@@ -53,10 +53,10 @@ public class LocationsData {
 
 	public void saveDefaultConfig() {
 		if (configFile == null) {
-			configFile = new File(plugin.getDataFolder(), "locations.yml");
+			configFile = new File(plugin.getDataFolder(), "poi.yml");
 		}
 		if (!configFile.exists()) {
-			plugin.saveResource("locations.yml", false);
+			plugin.saveResource("poi.yml", false);
 		}
 	}
 }

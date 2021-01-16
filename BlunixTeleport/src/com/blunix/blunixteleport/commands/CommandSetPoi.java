@@ -22,7 +22,7 @@ public class CommandSetPoi extends TPCommand {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		Player player = (Player) sender;
-		String inputPoi = args[1].toLowerCase();
+		String inputPoi = args[1];
 		if (plugin.getPois().containsKey(inputPoi)) {
 			MessageManager.sendMessage(player, "&cPOI name already exists.");
 			return;

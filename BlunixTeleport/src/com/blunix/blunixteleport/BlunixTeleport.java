@@ -28,13 +28,13 @@ import com.blunix.blunixteleport.commands.CommandTo;
 import com.blunix.blunixteleport.commands.CommandToa;
 import com.blunix.blunixteleport.commands.CommandWild;
 import com.blunix.blunixteleport.commands.TPCommand;
-import com.blunix.blunixteleport.files.LocationsData;
+import com.blunix.blunixteleport.files.PoiData;
 import com.blunix.blunixteleport.files.RandomLocationsData;
 import com.blunix.blunixteleport.managers.DataManager;
 import com.blunix.blunixteleport.managers.LocationDataManager;
 
 public class BlunixTeleport extends JavaPlugin {
-	private LocationsData locationManager;
+	private PoiData locationManager;
 	private RandomLocationsData randomLocationManager;
 	
 	private Map<Player, Player> teleportPetitions = new HashMap<Player, Player>();
@@ -53,7 +53,7 @@ public class BlunixTeleport extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		saveDefaultConfig();
-		locationManager = new LocationsData(this);
+		locationManager = new PoiData(this);
 		randomLocationManager = new RandomLocationsData(this);
 		
 		registerCommands();

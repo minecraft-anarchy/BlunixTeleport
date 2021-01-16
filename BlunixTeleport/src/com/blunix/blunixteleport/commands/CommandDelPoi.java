@@ -22,7 +22,7 @@ public class CommandDelPoi extends TPCommand {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		Player player = (Player) sender;
-		String deletePoi = args[1].toLowerCase();
+		String deletePoi = args[1];
 		if (!plugin.getPois().containsKey(deletePoi)) {
 			MessageManager.sendMessage(player, "&cThere is not any existing POI with this name.");
 			return;

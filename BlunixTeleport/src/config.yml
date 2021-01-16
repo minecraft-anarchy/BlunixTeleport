@@ -12,6 +12,9 @@ tp-request-expiration: 30
 # Chance in percent a teleportation will kill the player.
 death-chance: 0.5
 
+# Message that will be displayed if the teleport kills the player.
+teleport-death-message: "&6Loosing connection on the annular confinement beam!"
+
 # Text for Terms of Agreement (/tp toa).
 toa: |
   These are the Terms of Agreement for using teleportation using the /tp command as issued by the Temple of Teleportation (ToT) on January 15th 2021.\n
@@ -33,3 +36,9 @@ tp-wild-max-radius: 200000
 
 # Amount of /tp wild locations to pre-generate with /tp generatelocations.
 random-locations-amount: 1000
+
+# Worlds that will be displayed in /tp gps completer and its corresponding world folder
+worlds:
+  Overworld: world
+  Nether: world_nether
+  End: world_the_end

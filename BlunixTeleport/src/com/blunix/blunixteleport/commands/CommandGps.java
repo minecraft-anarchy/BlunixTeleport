@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.blunix.blunixteleport.BlunixTeleport;
+import com.blunix.blunixteleport.managers.ConfigManager;
 import com.blunix.blunixteleport.managers.TeleportManager;
 import com.blunix.blunixteleport.util.MessageManager;
 import com.blunix.blunixteleport.util.Parser;
@@ -29,14 +30,7 @@ public class CommandGps extends TPCommand {
 		Double x = Parser.getDoubleFromString(args[1]) + 0.500;
 		Double y = Parser.getDoubleFromString(args[2]) + 0.500;
 		Double z = Parser.getDoubleFromString(args[3]) + 0.500;
-		World world = null;
-		if (args[4].equalsIgnoreCase("overworld"))
-			world = Bukkit.getWorld("world");
-		else if (args[4].equalsIgnoreCase("nether"))
-			world = Bukkit.getWorld("world_nether");
-		else if (args[4].equalsIgnoreCase("end"))
-			world = Bukkit.getWorld("world_the_end");
-		
+		World world = ConfigManager.getGpsWorld(args[4]);
 		if (world == null) {
 			MessageManager.sendMessage(player, "&cUnknown dimension.");
 			return;
