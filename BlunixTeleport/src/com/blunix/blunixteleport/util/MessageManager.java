@@ -1,5 +1,7 @@
 package com.blunix.blunixteleport.util;
 
+import java.util.concurrent.TimeUnit;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -27,17 +29,28 @@ public class MessageManager {
 			}
 			String command = subCommand.getUsage();
 			String help = subCommand.getHelpMessage();
-			
+
 			helpMessage += "&5" + command + " &6- &9" + help + "\n";
 		}
-		
+
 		if (helpMessage.equalsIgnoreCase(""))
 			return;
 		MessageManager.sendMessage(sender, helpMessage);
 	}
 
 	public static void sendCooldownMessage(Player player, long cooldown) {
-		sendMessage(player, "&cYour TP is in cooldown! You need to wait &l" + cooldown + " seconds.");
+		long hours = TimeUnit.SECONDS.toHours(cooldown);
+		cooldown -= hours * 3600;
+		long minutes = TimeUnit.SECONDS.toMinutes(cooldown);
+		cooldown -= minutes * 60;
+		String message = "&cYour TP is in cooldown! You need to wait &l";
+
+		if (hours > 0)
+			sendMessage(player, message + hours + " hours " + minutes + " minutes and " + cooldown + " seconds&c.");
+		else if (minutes > 0)
+			sendMessage(player, message + minutes + " minutes and " + cooldown + " seconds&c.");
+		else
+			sendMessage(player, message + cooldown + " seconds&c.");
 	}
 
 	public static void sendNoPermissionMessage(CommandSender sender) {

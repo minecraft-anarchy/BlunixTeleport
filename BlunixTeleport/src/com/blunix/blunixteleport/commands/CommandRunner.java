@@ -49,10 +49,10 @@ public class CommandRunner implements CommandExecutor {
 			return true;
 		}
 
-//		if (!sender.hasPermission(subCommand.getPermission())) {
-//			MessageManager.sendNoPermissionMessage(sender);
-//			return true;
-//		}
+		if (!sender.hasPermission(subCommand.getPermission())) {
+			MessageManager.sendNoPermissionMessage(sender);
+			return true;
+		}
 
 		if (subCommand.isAffectedByCooldown() && subCommand.isPlayerCommand()) {
 			Player player = (Player) sender;
