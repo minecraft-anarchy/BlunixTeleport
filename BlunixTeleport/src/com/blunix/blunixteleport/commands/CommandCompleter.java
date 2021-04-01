@@ -27,63 +27,58 @@ public class CommandCompleter implements TabCompleter {
 				arguments.add(subCommand.getName());
 			}
 		}
-		ArrayList<String> results = new ArrayList<String>();
+		TPCommand subcommand = plugin.getSubcommands().get(args[0]);
+		if (args.length > 1 && (subcommand == null || !sender.hasPermission(subcommand.getPermission()))) {
+			arguments.clear();
+			return arguments;
+		}
+		if (args.length >= 0 && args.length < 2)
+			return getCompletion(arguments, args, 0);
 
-		if (args.length >= 0 && args.length < 2) {
-			for (String argument : arguments) {
-				if (argument.startsWith(args[0].toLowerCase()))
-					results.add(argument);
-			}
-
-			return results;
-
-		} else if (args.length >= 1 && args.length < 3) {
-			switch (args[0].toLowerCase()) {
-			case "accept":
-				return null;
-
-			case "delpoi":
-				results = getPoiList(results, args);
-				return results;
-
+		else if (args.length >= 1 && args.length < 3) {
+			arguments.clear();
+			switch (subcommand.getName()) {
 			case "to":
-				return null;
-
-			case "poi":
-				results = getPoiList(results, args);
-				return results;
-
-			case "toa":
-				results.add("accept");
-				results.add("deny");
-				return results;
-
+			case "accept":
 			case "deny":
 				return null;
 
+			case "poi":
+			case "delpoi":
+				return getCompletion(getPoiList(), args, 1);
+
+			case "toa":
+				arguments.add("accept");
+				arguments.add("deny");
+				return arguments;
+
 			default:
-				return results;
+				return arguments;
 			}
 
-		} else if (args.length >= 5 && args[0].equalsIgnoreCase("gps")) {
-			for (String worldLabel : ConfigManager.getGpsWorldLabels()) {
-				if (!worldLabel.toLowerCase().startsWith(args[4].toLowerCase()))
-					continue;
-				
-				results.add(worldLabel);
-			}
-			
-			return results;
+		} else if (args.length >= 5 && subcommand.getName().equalsIgnoreCase("gps"))
+			return getCompletion((ArrayList<String>) ConfigManager.getGpsWorldLabels(), args, 4);
+		
+		arguments.clear();
+		return arguments;
+	}
+
+	private ArrayList<String> getCompletion(ArrayList<String> arguments, String[] args, int index) {
+		ArrayList<String> results = new ArrayList<String>();
+		for (String argument : arguments) {
+			if (!argument.toLowerCase().startsWith(args[index].toLowerCase()))
+				continue;
+
+			results.add(argument);
 		}
 		return results;
 	}
 
-	private ArrayList<String> getPoiList(ArrayList<String> results, String[] args) {
-		for (String poi : plugin.getPois().keySet()) {
-			if (poi.toLowerCase().startsWith(args[1].toLowerCase())) {
-				results.add(poi);
-			}
-		}
-		return results;
+	private ArrayList<String> getPoiList() {
+		ArrayList<String> poiNames = new ArrayList<String>();
+		for (String poi : plugin.getPois().keySet())
+			poiNames.add(poi);
+
+		return poiNames;
 	}
 }
